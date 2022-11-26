@@ -2,7 +2,7 @@
 Seminar on Software Systems, Technologies and Security  Skill Project
 
 # Task 
-#----------------------------
+# ----------------------------
 
 # Task 1:  Manage GitHub scripts and documents
 
