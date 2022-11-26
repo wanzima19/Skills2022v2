@@ -1,0 +1,11 @@
+---
+  - name:  WEBSERVER INSTALLATION AND TESTING
+    hosts: localhost
+    become: true
+    tasks:
+      - name: INSTALL APACHE2
+        apt: name=apache2 update_cache=yes state=latest
+ 
+      - name: TESTING
+        command: /bin/echo hello from Prince Appiah
+     
