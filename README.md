@@ -11,20 +11,20 @@ repository
 
 
 # Task 2: Manage Webservers through Ansible.
-###Task description:
+### Task description:
 Write the Ansible script to install and test the webserver with ping command
 in a single playbook. Choose either Apache or Nginx server based on your own
 preference
 
 # Task 3: Manage Docker microservices
-###Task description:
+### Task description:
 Create a docker microservice
 
 # Task 4: CI/CD Pipeline using Jenkins
-###Task description:
+### Task description:
 Create a Jenkins pipeline
 
 # Task 5: Unit testing
-###Task description:
+### Task description:
 Create a unittest script in Python that asserts the output of all the
 functions in the given Python module
