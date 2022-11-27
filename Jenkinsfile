@@ -4,18 +4,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
+                git 'https://github.com/alpinelinux/docker-alpine.git'
+                sh 'docker run -it --rm alpine'
+                     
+                sh 'docker ps -a'
+             
+                     }
+                  }
     }
 }
