@@ -1,17 +1,20 @@
 pipeline {
     agent any
 
+
     stages {
-       stage('build') {
+        stage('Build') {
             steps {
-                sh 'docker run -e CI=true -v $JENKINS_INSTALL$PWD:/usr/src/app zenika/alpine-node yarn build'
-            }
-        }
-        stage('deploy') {
-            steps {
-                sh 'docker build -t local/application:${BRANCH_NAME} $PWD'
-                sh 'docker-compose -p ${BRANCH_NAME}-demo up -d'
-            }
+                git 'https://github.com/cturra/docker-ntp.git'
+                sh 'docker run --name=ntp            \
+              --restart=always      \
+              --detach              \
+              --publish=123:123/udp \
+              cturra/ntp'
+              sh 'docker ps -a'
+              sh 'docker exec ntp chronyc tracking'
+                
+              }
         }
     }
 }
