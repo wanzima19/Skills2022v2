@@ -1,39 +1,12 @@
-def now = new Date()
-
 pipeline {
-  agent any
-  options {
-    skipStagesAfterUnstable()
-    disableConcurrentBuilds()
-    timestamps()
-  }
-  environment {
-    TAG = "${now.format("Y.M")}"
-  }
-  stages {
-    stage("Checkout") {
-      steps {
-        deleteDir()
-        checkout scm
-      }
+    agent {
+        docker { image 'node:7-alpine' }
     }
-    stage("Build and push container") {
-      steps {
-        script {
-          def app = docker.build("docker.io/saidsef/alpine-jenkins-dockerfile:${env.BUILD_NUMBER}", ".")
-          /**
-          * In order to configure the registry credentials, go the Jenkins Manager Credentials page.
-          * Add a new username/password entry and enter your registry login and password.
-          */
-          app.withRegistry("https://registry.hub.docker.com", "dockerhub")
-          app.push("docker.io/saidsef/alpine-jenkins-dockerfile:${env.BUILD_NUMBER}")
+    stages {
+        stage('Test') {
+            steps {
+                sh 'node --version'
+            }
         }
-      }
     }
-  }
-  post {
-    success {
-      deleteDir()
-    }
-  }
 }
