@@ -7,5 +7,6 @@
         apt: name=apache2 update_cache=yes state=latest
  
       - name: TESTING
-        command: /bin/echo hello from Prince Appiah
+        command: /bin/echo hello from Appiah Prince
      
+
